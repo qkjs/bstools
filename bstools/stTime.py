@@ -4,17 +4,14 @@ import time
 
 __all__ = ["tsToLocalTime", "PerformCacl"]
 
-def PerformCacl(func):
+def performCacl(func):
     def main(*argv, **keys):
         timeStart = time.time()
         result = func(*argv, **keys)
         timeEnd = time.time()
-        print("模块%s耗时: %.15f秒"%(func.__name__,timeEnd - timeStart))
+        print(u"模块%s耗时: %.15f秒"%(func.__name__,timeEnd - timeStart))
         return result
     return main
-
-class arrTypeErr(Exception):
-    pass
 
 def tsToLocalTime(timestamp, timeType = "ms"):
     if timeType not in ["ms","s"]:

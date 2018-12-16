@@ -4,7 +4,7 @@
 from enum import Enum
 import sys
 
-class lftColor(Enum):
+class LftColor(Enum):
     black = 30
     red = 31
     green = 32
@@ -14,7 +14,7 @@ class lftColor(Enum):
     cyanine = 36
     white = 37
     
-class lbgColor(Enum):
+class LbgColor(Enum):
     black = 40
     red = 41
     green = 42
@@ -24,7 +24,7 @@ class lbgColor(Enum):
     cyanine = 46
     white = 47
     
-class lsType(Enum):
+class LsType(Enum):
     defute = 0
     highlight = 1
     underLine = 4
