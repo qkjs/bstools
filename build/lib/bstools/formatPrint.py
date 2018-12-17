@@ -40,6 +40,6 @@ def cprint(info, f = 0, a = 0, t = 0):
     )
     afterString = "\033[0m"
     if sys.platform != "win32":
-        print("%s%s%s"%(fortString, info, afterString), end="")
+        print("%s%s%s"%(fortString, info, afterString)[:-1])
     else:
-        print("%s"%info, end="")
+        print("%s"%info[:-1])
