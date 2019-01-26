@@ -43,3 +43,24 @@ def cprint(info, f = 0, a = 0, t = 0):
         print("%s%s%s"%(fortString, info, afterString)[:-1])
     else:
         print("%s"%info[:-1])
+
+def dataSizeShort(size):
+    
+    import bisect
+    
+    d = [(1024-1,'K'), 
+         (1024**2-1,'M'), 
+         (1024**3-1,'G'), 
+         (1024**4-1,'T'),
+         (1024**5-1,'P'),
+         (1024**6-1,'E'),
+         (1024**7-1,'B'),
+         ]
+    
+    s = [x[0] for x in d]
+    index = bisect.bisect_left(s, size) - 1
+    if index == -1:
+        return str(size)
+    else:
+        b, u = d[index]
+    return str(size / (b+1)) + u

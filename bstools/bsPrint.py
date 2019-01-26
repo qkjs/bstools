@@ -44,7 +44,7 @@ def cprint(info, f = 0, a = 0, t = 0):
     else:
         print("%s"%info[:-1])
 
-def dataSizeShort(size):
+def dataSizeShort(size, decimal = 2):
     
     import bisect
     
@@ -60,7 +60,7 @@ def dataSizeShort(size):
     s = [x[0] for x in d]
     index = bisect.bisect_left(s, size) - 1
     if index == -1:
-        return str(size)
+        return "%s"%round(size, decimal)
     else:
         b, u = d[index]
-    return str(size / (b+1)) + u
+    return "%s%s"%(round(size / (b+1), decimal), u)
