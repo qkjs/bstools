@@ -1,5 +1,8 @@
-from bstools import bsPrint
+from bstools import bsTime
+import time
 
-print(bsPrint.dataSizeShort(12414124124124125125, 3))
+ts = str(time.time() * 1000)[:13]
+print(ts)
+print(bsTime.tsToLt(ts, splitSign = "|"))
 
 

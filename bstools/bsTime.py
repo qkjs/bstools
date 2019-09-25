@@ -13,14 +13,19 @@ def performCacl(func):
         return result
     return main
 
-def tsToLt(timestamp, timeType = "ms"):
+def tsToLt(timestamp, timeType = "ms", splitSign = ":" ):
     if timeType not in ["ms","s"]:
         raise bsTimeArrErr("参数错误, 接受'ms' 和's' ")
-    else:
-        tType = timeType
-    timestamp = float(timestamp) if timeType == "s" else float(timestamp)*0.001
+
+    timestamp = float(timestamp) if timeType == "s" else float(timestamp) * 0.001
     timeArray = time.localtime(timestamp)
-    return time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+    
+    return time.strftime(
+        "%Y-%m-%d %H:%M:%S", 
+        timeArray).replace(
+            ":", 
+            splitSign
+        )
 
 def ltToTs(timeString, timeType = "s"):
     try:    
@@ -33,7 +38,7 @@ def ltToTs(timeString, timeType = "s"):
     elif timeType == "s":
         pass
     else:
-        raise arrTypeErr(u"参数错误, 接受'ms' 和's' ")
+        raise bsTimeArrErr(u"参数错误, 接受'ms' 和's' ")
     return timeStamp
 
 class bsTimeFormatErr(Exception):
