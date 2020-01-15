@@ -38,7 +38,7 @@ def ltToTs(timeString, timeType = "s"):
     elif timeType == "s":
         pass
     else:
-        raise bsTimeArrErr(u"参数错误, 接受'ms' 和's' ")
+        raise bsTimeArrErr(u"参数错误, 接受'ms'和's'")
     return timeStamp
 
 class bsTimeFormatErr(Exception):

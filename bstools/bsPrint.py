@@ -3,6 +3,7 @@
 
 from enum import Enum
 import sys
+import time
 
 class LftColor(Enum):
     black = 30
@@ -32,7 +33,7 @@ class LsType(Enum):
     reverse = 7
     disable = 8
 
-def cprint(info, f = 0, a = 0, t = 0):
+def cPrint(info, f = 0, a = 0, t = 0):
     fortString = "\033[%s%s%sm"%(
         str(t.value) + ";" if t else "", 
         str(f.value) + ";"if f else "", 
@@ -64,3 +65,20 @@ def dataSizeShort(size, decimal = 2):
     else:
         b, u = d[index]
     return "%s%s"%(round(size / (b+1), decimal), u)
+class dPrint(object):
+    def __init__(self):
+        self.debug = False
+        
+    def debug(self, message):
+        if self.debug:
+            print("%s---%s"%(time.strftime("%Y-%m-%d %H:%M:%S", 
+                time.localtime(time.time())), message))
+        else:
+            pass
+
+    def info(self, message):
+        if self.debug:
+            print("%s---%s"%(time.strftime("%Y-%m-%d %H:%M:%S", 
+                          time.localtime(time.time())), message))
+        else:
+            pass
